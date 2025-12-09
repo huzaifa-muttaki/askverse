@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - Askverse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="dashboard.html" class="logo-link">
+                    <div class="logo-small">A</div>
+                    <span class="logo-text">Askverse</span>
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="dashboard.html" class="nav-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </a>
+                <a href="profile.html" class="nav-icon">
+                    <div class="avatar-small">YO</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Leaderboard Content -->
+    <div class="leaderboard-container">
+        <div class="leaderboard-header">
+            <h1>🏆 Leaderboard</h1>
+            <p>Top contributors ranked by total credits earned</p>
+        </div>
+
+        <div class="leaderboard-filters">
+            <button class="filter-btn active">All Time</button>
+            <button class="filter-btn">This Month</button>
+            <button class="filter-btn">This Week</button>
+        </div>
+
+        <div class="leaderboard-list">
+            <!-- Rank 1 -->
+            <div class="leaderboard-item gold">
+                <div class="rank-number">1</div>
+                <div class="rank-avatar">AK</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">Dr. Alex Kumar</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Machine Learning</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">12,450</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 2 -->
+            <div class="leaderboard-item silver">
+                <div class="rank-number">2</div>
+                <div class="rank-avatar">JL</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">Jessica Lee</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Web Development</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">9,870</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 3 -->
+            <div class="leaderboard-item bronze">
+                <div class="rank-number">3</div>
+                <div class="rank-avatar">DP</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">David Park</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Data Science</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">8,230</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 4 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">4</div>
+                <div class="rank-avatar">RG</div>
+                <div class="rank-info">
+                    <span class="rank-name">Rachel Green</span>
+                    <span class="rank-domain">UI/UX Design</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">7,650</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 5 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">5</div>
+                <div class="rank-avatar">TB</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">Tom Brady</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Cybersecurity</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">6,890</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 6 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">6</div>
+                <div class="rank-avatar">SM</div>
+                <div class="rank-info">
+                    <span class="rank-name">Sarah Miller</span>
+                    <span class="rank-domain">Frontend Development</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">5,420</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 7 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">7</div>
+                <div class="rank-avatar">JD</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">James Davis</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Cloud Computing</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">4,780</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 8 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">8</div>
+                <div class="rank-avatar">LW</div>
+                <div class="rank-info">
+                    <span class="rank-name">Lisa Wang</span>
+                    <span class="rank-domain">Mobile Development</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">4,320</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 9 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">9</div>
+                <div class="rank-avatar">MH</div>
+                <div class="rank-info">
+                    <span class="rank-name">Michael Harris</span>
+                    <span class="rank-domain">DevOps</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">3,890</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+
+            <!-- Rank 10 -->
+            <div class="leaderboard-item">
+                <div class="rank-number">10</div>
+                <div class="rank-avatar">EN</div>
+                <div class="rank-info">
+                    <div class="rank-name-row">
+                        <span class="rank-name">Emma Nelson</span>
+                        <svg class="verified-badge" width="16" height="16" fill="#1DA1F2" viewBox="0 0 24 24">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <span class="rank-domain">Blockchain</span>
+                </div>
+                <div class="rank-stats">
+                    <span class="rank-credits">3,560</span>
+                    <span class="rank-label">credits</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/script.js">
+        // Dark Mode Toggle - Universal Implementation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        themeToggle.innerHTML = `
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        `;
+        
+        // Append to body
+        document.body.appendChild(themeToggle);
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', function() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Animation effect
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+        });
+    });
+    </script>
+</body>
+</html>

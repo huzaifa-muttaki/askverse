@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ask a Question - Askverse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="dashboard.html" class="logo-link">
+                    <div class="logo-small">A</div>
+                    <span class="logo-text">Askverse</span>
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="dashboard.html" class="nav-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="messages-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="notifications-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </a>
+                <a href="profile.html" class="nav-icon">
+                    <div class="avatar-small" id="nav-avatar">U</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="ask-question-page">
+        <div class="ask-question-container">
+            <div class="ask-question-card">
+                <div class="ask-question-header">
+                    <h1>Ask a Question</h1>
+                    <p>Share your question with the Askverse community</p>
+                </div>
+
+                <form class="ask-question-form" id="askQuestionForm">
+                    <!-- Question Title -->
+                    <div class="form-group">
+                        <label for="questionTitle" class="form-label">
+                            Question Title
+                            <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="questionTitle" 
+                            class="input" 
+                            placeholder="e.g., How do I implement a binary search tree in Python?"
+                            required
+                        >
+                        <p class="form-hint">Be specific and imagine you're asking a question to another person</p>
+                    </div>
+
+                    <!-- Question Description -->
+                    <div class="form-group">
+                        <label for="questionDescription" class="form-label">
+                            Description (Optional)
+                        </label>
+                        <textarea 
+                            id="questionDescription" 
+                            class="textarea" 
+                            placeholder="Include all the information someone would need to answer your question. Add code snippets, error messages, or any relevant details..."
+                        ></textarea>
+                        <p class="form-hint">Minimum 20 characters recommended for better answers</p>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="form-group">
+                        <label for="questionTags" class="form-label">
+                            Tags
+                            <span class="required">*</span>
+                        </label>
+                        <input 
+                            type="text" 
+                            id="questionTags" 
+                            class="input" 
+                            placeholder="e.g., Python, Data Structures, Algorithms"
+                            required
+                        >
+                        <p class="form-hint">Add up to 5 tags separated by commas</p>
+                        <div class="tag-suggestions">
+                            <span class="tag-chip" onclick="addTag('JavaScript')">JavaScript</span>
+                            <span class="tag-chip" onclick="addTag('Python')">Python</span>
+                            <span class="tag-chip" onclick="addTag('React')">React</span>
+                            <span class="tag-chip" onclick="addTag('Web Development')">Web Development</span>
+                            <span class="tag-chip" onclick="addTag('Data Science')">Data Science</span>
+                            <span class="tag-chip" onclick="addTag('Machine Learning')">Machine Learning</span>
+                        </div>
+                    </div>
+
+                    <!-- Bounty -->
+                    <div class="form-group">
+                        <label for="questionBounty" class="form-label">
+                            Bounty (Credits) - Your Balance: <span id="user-credits">100</span>
+                        </label>
+                        <div class="bounty-selector">
+                            <input 
+                                type="range" 
+                                id="questionBounty" 
+                                class="bounty-slider" 
+                                min="0" 
+                                max="200" 
+                                value="50" 
+                                step="10"
+                            >
+                            <div class="bounty-display">
+                                <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                                </svg>
+                                <span id="bountyValue">50</span>
+                                <span>credits</span>
+                            </div>
+                        </div>
+                        <p class="form-hint">Offer credits to attract expert answers. Higher bounties get more attention!</p>
+                    </div>
+
+                    <!-- Tips Card -->
+                    <div class="tips-card">
+                        <h3>💡 Tips for a Great Question</h3>
+                        <ul>
+                            <li>✓ Make your title question specific and clear</li>
+                            <li>✓ Include relevant code, error messages, or examples</li>
+                            <li>✓ Describe what you've already tried</li>
+                            <li>✓ Use appropriate tags to reach the right experts</li>
+                            <li>✓ Proofread before posting</li>
+                        </ul>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div class="form-actions">
+                        <a href="dashboard.html" class="btn btn-outline">Cancel</a>
+                        <button type="submit" class="btn btn-primary" id="submit-btn">Post Question</button>
+                    </div>
+                    
+                    <p id="form-error" class="auth-error"></p>
+                </form>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="ask-sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">How to Ask</h3>
+                    <div class="sidebar-content">
+                        <p><strong>Search first</strong> - Check if your question has been asked before</p>
+                        <p><strong>Be specific</strong> - Include details and context</p>
+                        <p><strong>Format properly</strong> - Use clear language</p>
+                        <p><strong>Choose tags</strong> - Help experts find your question</p>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Your Stats</h3>
+                    <div class="stats-grid">
+                        <div class="stat-box">
+                            <span class="stat-value" id="sidebar-credits">100</span>
+                            <span class="stat-label">Credits</span>
+                        </div>
+                        <div class="stat-box">
+                            <span class="stat-value" id="sidebar-questions">0</span>
+                            <span class="stat-label">Questions</span>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, doc, getDoc, updateDoc, increment } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { firebaseConfig } from "./js/firebaseConfig.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let userData = null;
+
+        // Auth State Handler
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+            } else {
+                currentUser = user;
+                await loadUserData();
+            }
+        });
+
+        // Load User Data
+        async function loadUserData() {
+            try {
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                
+                if (userDoc.exists()) {
+                    userData = userDoc.data();
+                } else {
+                    userData = {
+                        email: currentUser.email,
+                        fullName: currentUser.displayName || currentUser.email.split('@')[0],
+                        username: currentUser.email.split('@')[0],
+                        credits: 100,
+                        questionsAsked: 0
+                    };
+                }
+
+                // Update UI
+                const initials = userData.fullName 
+                    ? userData.fullName.substring(0, 2).toUpperCase()
+                    : currentUser.email.substring(0, 2).toUpperCase();
+                
+                document.getElementById('nav-avatar').textContent = initials;
+                document.getElementById('user-credits').textContent = userData.credits || 100;
+                document.getElementById('sidebar-credits').textContent = userData.credits || 100;
+                document.getElementById('sidebar-questions').textContent = userData.questionsAsked || 0;
+                document.getElementById('questionBounty').max = userData.credits || 100;
+
+            } catch (error) {
+                console.error('Error loading user data:', error);
+            }
+        }
+
+        // Bounty Slider
+        const bountySlider = document.getElementById('questionBounty');
+        const bountyValue = document.getElementById('bountyValue');
+        
+        bountySlider.addEventListener('input', function() {
+            bountyValue.textContent = this.value;
+        });
+
+        // Add Tag Function
+        window.addTag = function(tagName) {
+            const tagsInput = document.getElementById('questionTags');
+            const currentTags = tagsInput.value;
+            
+            if (currentTags.trim() === '') {
+                tagsInput.value = tagName;
+            } else {
+                const tagsArray = currentTags.split(',').map(t => t.trim());
+                if (!tagsArray.includes(tagName) && tagsArray.length < 5) {
+                    tagsInput.value = currentTags + ', ' + tagName;
+                }
+            }
+        };
+
+        // Form Submission
+        document.getElementById('askQuestionForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const errorEl = document.getElementById('form-error');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            errorEl.textContent = '';
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+
+            try {
+                const title = document.getElementById('questionTitle').value.trim();
+                const body = document.getElementById('questionDescription').value.trim();
+                const tagsInput = document.getElementById('questionTags').value.trim();
+                const bounty = parseInt(document.getElementById('questionBounty').value) || 0;
+
+                // Validation
+                if (!title) {
+                    throw new Error('Title is required');
+                }
+
+                if (!tagsInput) {
+                    throw new Error('At least one tag is required');
+                }
+
+                // Parse tags
+                const tags = tagsInput.split(',')
+                    .map(t => t.trim())
+                    .filter(Boolean)
+                    .slice(0, 5);
+
+                if (tags.length === 0) {
+                    throw new Error('At least one valid tag is required');
+                }
+
+                // Check credits
+                if (bounty > 0 && bounty > (userData?.credits || 0)) {
+                    throw new Error('Insufficient credits');
+                }
+
+                // Create question
+                const questionData = {
+                    title: title,
+                    body: body || '',
+                    tags: tags,
+                    bounty: bounty,
+                    authorUid: currentUser.uid,
+                    authorEmail: currentUser.email,
+                    authorUsername: userData?.username || currentUser.email.split('@')[0],
+                    authorFullName: userData?.fullName || currentUser.displayName || currentUser.email.split('@')[0],
+                    createdAt: serverTimestamp(),
+                    upvotes: 0,
+                    answerCount: 0,
+                    viewCount: 0,
+                    status: 'open'
+                };
+
+                // Add to Firestore
+                await addDoc(collection(db, 'questions'), questionData);
+
+                // Update user stats
+                const updates = {
+                    questionsAsked: increment(1)
+                };
+                
+                if (bounty > 0) {
+                    updates.credits = increment(-bounty);
+                }
+
+                await updateDoc(doc(db, 'users', currentUser.uid), updates);
+
+                // Show success
+                showNotification('Question posted successfully! 🎉', 'success');
+                
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 1500);
+
+            } catch (error) {
+                console.error('Error posting question:', error);
+                errorEl.textContent = error.message || 'Failed to post question';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Question';
+            }
+        });
+
+        // Navigation Buttons
+        document.getElementById('notifications-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Notifications feature coming soon! 🔔', 'info');
+        });
+
+        document.getElementById('messages-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Messages feature coming soon! 💬', 'info');
+        });
+
+        // Notification Function
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            const icons = {
+                success: '✓',
+                error: '✕',
+                info: 'ℹ'
+            };
+            const icon = icons[type] || icons.info;
+            
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span style="font-size: 18px; font-weight: bold;">${icon}</span>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        // Dark Mode Toggle - Universal Implementation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        themeToggle.innerHTML = `
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        `;
+        
+        // Append to body
+        document.body.appendChild(themeToggle);
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', function() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Animation effect
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+        });
+    });
+    </script>
+</body>
+</html>

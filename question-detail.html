@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Detail - Askverse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="dashboard.html" class="logo-link">
+                    <div class="logo-small">A</div>
+                    <span class="logo-text">Askverse</span>
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="dashboard.html" class="nav-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="messages-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="notifications-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </a>
+                <a href="profile.html" class="nav-icon">
+                    <div class="avatar-small" id="nav-avatar">U</div>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Question Detail Content -->
+    <div class="question-detail-page">
+        <div class="question-detail-container">
+            <!-- Question Card -->
+            <div class="question-detail-card">
+                <div class="loading" id="question-loading">
+                    <div class="spinner"></div>
+                </div>
+
+                <div id="question-content" style="display: none;">
+                    <!-- Question Header -->
+                    <div class="question-header">
+                        <div class="question-author" style="cursor: pointer;" id="question-author">
+                            <div class="avatar-medium" id="author-avatar">AN</div>
+                            <div>
+                                <div class="author-info">
+                                    <span class="author-name" id="author-name">Anonymous</span>
+                                </div>
+                                <span class="post-time" id="question-time">Just now</span>
+                            </div>
+                        </div>
+                        <div id="bounty-badge-container"></div>
+                    </div>
+
+                    <!-- Question Title -->
+                    <h1 class="question-title" id="question-title">Loading...</h1>
+
+                    <!-- Question Body -->
+                    <div class="question-body" id="question-body"></div>
+
+                    <!-- Question Tags -->
+                    <div class="question-tags" id="question-tags"></div>
+
+                    <!-- Question Actions -->
+                    <div class="question-actions">
+                        <button class="action-btn" id="upvote-btn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                            </svg>
+                            <span id="upvote-count">0</span>
+                        </button>
+                        
+                        <button class="action-btn" id="share-btn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"></path>
+                            </svg>
+                            <span>Share</span>
+                        </button>
+                        
+                        <button class="action-btn" id="bookmark-btn">
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                            <span>Save</span>
+                        </button>
+                    </div>
+
+                    <!-- Answer Section -->
+                    <div class="answers-section">
+                        <h2 class="answers-title">
+                            <span id="answers-count">0</span> Answers
+                        </h2>
+
+                        <!-- Answer Form -->
+                        <div class="answer-form-card">
+                            <div class="answer-form-header">
+                                <div class="avatar" id="answer-avatar">U</div>
+                                <h3>Your Answer</h3>
+                            </div>
+                            <form id="answer-form">
+                                <textarea 
+                                    id="answer-input" 
+                                    class="textarea" 
+                                    placeholder="Write your answer here..."
+                                    rows="6"
+                                    required
+                                ></textarea>
+                                <div class="form-actions" style="margin-top: 16px;">
+                                    <button type="button" class="btn btn-outline" onclick="window.location.href='dashboard.html'">Cancel</button>
+                                    <button type="submit" class="btn btn-primary" id="submit-answer-btn">Post Answer</button>
+                                </div>
+                            </form>
+                        </div>
+
+                        <!-- Answers List -->
+                        <div id="answers-list">
+                            <div class="loading">
+                                <div class="spinner"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="question-sidebar">
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Question Stats</h3>
+                    <div class="question-stats">
+                        <div class="stat-row">
+                            <span class="stat-label">Asked</span>
+                            <span class="stat-value" id="asked-date">Loading...</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Viewed</span>
+                            <span class="stat-value" id="view-count">0 times</span>
+                        </div>
+                        <div class="stat-row">
+                            <span class="stat-label">Answers</span>
+                            <span class="stat-value" id="answer-count-sidebar">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-card">
+                    <h3 class="sidebar-title">Related Questions</h3>
+                    <div id="related-questions">
+                        <p style="color:var(--text-muted);font-size:14px;">No related questions yet</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, collection, query, where, getDocs, addDoc, 
+                 serverTimestamp, updateDoc, increment, orderBy } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { firebaseConfig } from "./js/firebaseConfig.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let userData = null;
+        let questionId = null;
+        let questionData = null;
+
+        // Get question ID from URL
+        const urlParams = new URLSearchParams(window.location.search);
+        questionId = urlParams.get('id');
+
+        if (!questionId) {
+            window.location.href = 'dashboard.html';
+        }
+
+        // Auth State Handler
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+            } else {
+                currentUser = user;
+                await loadUserData();
+                await loadQuestion();
+                await loadAnswers();
+            }
+        });
+
+        // Load User Data
+        async function loadUserData() {
+            try {
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                
+                if (userDoc.exists()) {
+                    userData = userDoc.data();
+                } else {
+                    userData = {
+                        email: currentUser.email,
+                        fullName: currentUser.displayName || currentUser.email.split('@')[0],
+                        username: currentUser.email.split('@')[0]
+                    };
+                }
+
+                const initials = userData.fullName 
+                    ? userData.fullName.substring(0, 2).toUpperCase()
+                    : currentUser.email.substring(0, 2).toUpperCase();
+                
+                document.getElementById('nav-avatar').textContent = initials;
+                document.getElementById('answer-avatar').textContent = initials;
+
+            } catch (error) {
+                console.error('Error loading user data:', error);
+            }
+        }
+
+        // Load Question
+        async function loadQuestion() {
+            try {
+                const questionDoc = await getDoc(doc(db, 'questions', questionId));
+
+                if (!questionDoc.exists()) {
+                    showNotification('Question not found', 'error');
+                    setTimeout(() => window.location.href = 'dashboard.html', 2000);
+                    return;
+                }
+
+                questionData = questionDoc.data();
+
+                // Update view count
+                await updateDoc(doc(db, 'questions', questionId), {
+                    viewCount: increment(1)
+                });
+
+                // Display question
+                displayQuestion(questionData);
+
+                document.getElementById('question-loading').style.display = 'none';
+                document.getElementById('question-content').style.display = 'block';
+
+            } catch (error) {
+                console.error('Error loading question:', error);
+                showNotification('Failed to load question', 'error');
+            }
+        }
+
+        // Display Question
+        function displayQuestion(question) {
+            const authorInitials = question.authorFullName 
+                ? question.authorFullName.substring(0, 2).toUpperCase()
+                : 'AN';
+
+            document.getElementById('author-avatar').textContent = authorInitials;
+            document.getElementById('author-name').textContent = question.authorFullName || question.authorUsername || 'Anonymous';
+            document.getElementById('question-time').textContent = formatTimestamp(question.createdAt);
+            document.getElementById('question-title').textContent = question.title;
+            
+            if (question.body) {
+                document.getElementById('question-body').innerHTML = `<p>${escapeHTML(question.body)}</p>`;
+            } else {
+                document.getElementById('question-body').style.display = 'none';
+            }
+
+            // Tags
+            const tagsHTML = (question.tags || [])
+                .map(tag => `<span class="tag">#${escapeHTML(tag)}</span>`)
+                .join('');
+            document.getElementById('question-tags').innerHTML = tagsHTML;
+
+            // Bounty
+            if (question.bounty > 0) {
+                document.getElementById('bounty-badge-container').innerHTML = `
+                    <div class="bounty-badge">
+                        <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                        </svg>
+                        ${question.bounty} credits
+                    </div>
+                `;
+            }
+
+            // Stats
+            document.getElementById('upvote-count').textContent = question.upvotes || 0;
+            document.getElementById('answers-count').textContent = question.answerCount || 0;
+            document.getElementById('answer-count-sidebar').textContent = question.answerCount || 0;
+            document.getElementById('view-count').textContent = `${(question.viewCount || 0) + 1} times`;
+            document.getElementById('asked-date').textContent = formatTimestamp(question.createdAt);
+
+            // Click author to view profile
+            document.getElementById('question-author').addEventListener('click', () => {
+                window.location.href = 'profile.html';
+            });
+        }
+
+        // Load Answers
+        async function loadAnswers() {
+            const answersList = document.getElementById('answers-list');
+
+            try {
+                const q = query(
+                    collection(db, 'answers'),
+                    where('questionId', '==', questionId),
+                    orderBy('createdAt', 'desc')
+                );
+                const snapshot = await getDocs(q);
+
+                answersList.innerHTML = '';
+
+                if (snapshot.empty) {
+                    answersList.innerHTML = `
+                        <div style="text-align:center;padding:40px">
+                            <p style="color:var(--text-muted);font-size:16px;">No answers yet. Be the first to answer!</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                snapshot.forEach(docSnap => {
+                    const answer = docSnap.data();
+                    const answerCard = createAnswerCard(docSnap.id, answer);
+                    answersList.appendChild(answerCard);
+                });
+
+            } catch (error) {
+                console.error('Error loading answers:', error);
+                answersList.innerHTML = `
+                    <div style="text-align:center;padding:40px">
+                        <p style="color:var(--error);">Failed to load answers</p>
+                    </div>
+                `;
+            }
+        }
+
+        // Create Answer Card
+        function createAnswerCard(answerId, answer) {
+            const card = document.createElement('div');
+            card.className = 'answer-card';
+
+            const authorInitials = answer.authorFullName 
+                ? answer.authorFullName.substring(0, 2).toUpperCase()
+                : 'AN';
+
+            card.innerHTML = `
+                <div class="answer-header">
+                    <div class="answer-author" style="cursor: pointer;">
+                        <div class="avatar-medium">${authorInitials}</div>
+                        <div>
+                            <div class="author-info">
+                                <span class="author-name">${escapeHTML(answer.authorFullName || answer.authorUsername || 'Anonymous')}</span>
+                            </div>
+                            <span class="post-time">${formatTimestamp(answer.createdAt)}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="answer-body">
+                    <p>${escapeHTML(answer.body)}</p>
+                </div>
+                <div class="answer-actions">
+                    <button class="action-btn answer-upvote-btn" data-answer-id="${answerId}">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                        </svg>
+                        <span>${answer.upvotes || 0}</span>
+                    </button>
+                </div>
+            `;
+
+            // Click author to view profile
+            card.querySelector('.answer-author').addEventListener('click', () => {
+                window.location.href = 'profile.html';
+            });
+
+            return card;
+        }
+
+        // Submit Answer Form
+        document.getElementById('answer-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const submitBtn = document.getElementById('submit-answer-btn');
+            const answerInput = document.getElementById('answer-input');
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Posting...';
+
+            try {
+                const answerText = answerInput.value.trim();
+
+                if (!answerText) {
+                    throw new Error('Please write an answer');
+                }
+
+                // Add answer to Firestore
+                await addDoc(collection(db, 'answers'), {
+                    questionId: questionId,
+                    body: answerText,
+                    authorUid: currentUser.uid,
+                    authorEmail: currentUser.email,
+                    authorUsername: userData?.username || currentUser.email.split('@')[0],
+                    authorFullName: userData?.fullName || currentUser.displayName || currentUser.email.split('@')[0],
+                    createdAt: serverTimestamp(),
+                    upvotes: 0
+                });
+
+                // Update question answer count
+                await updateDoc(doc(db, 'questions', questionId), {
+                    answerCount: increment(1)
+                });
+
+                // Update user stats
+                await updateDoc(doc(db, 'users', currentUser.uid), {
+                    answersGiven: increment(1),
+                    credits: increment(10) // Reward for answering
+                });
+
+                showNotification('Answer posted successfully! +10 credits 🎉', 'success');
+                
+                // Clear form
+                answerInput.value = '';
+                
+                // Reload answers
+                await loadAnswers();
+                await loadQuestion();
+
+            } catch (error) {
+                console.error('Error posting answer:', error);
+                showNotification(error.message || 'Failed to post answer', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Post Answer';
+            }
+        });
+
+        // Upvote Question
+        document.getElementById('upvote-btn').addEventListener('click', async () => {
+            try {
+                await updateDoc(doc(db, 'questions', questionId), {
+                    upvotes: increment(1)
+                });
+                
+                const currentCount = parseInt(document.getElementById('upvote-count').textContent);
+                document.getElementById('upvote-count').textContent = currentCount + 1;
+                
+                showNotification('Upvoted! 👍', 'success');
+            } catch (error) {
+                console.error('Error upvoting:', error);
+                showNotification('Failed to upvote', 'error');
+            }
+        });
+
+        // Share Button
+        document.getElementById('share-btn').addEventListener('click', () => {
+            const url = window.location.href;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: questionData?.title || 'Question',
+                    url: url
+                }).then(() => {
+                    showNotification('Shared successfully!', 'success');
+                }).catch(() => {
+                    copyToClipboard(url);
+                });
+            } else {
+                copyToClipboard(url);
+            }
+        });
+
+        // Bookmark Button
+        document.getElementById('bookmark-btn').addEventListener('click', () => {
+            const path = document.querySelector('#bookmark-btn svg path');
+            const isBookmarked = path.getAttribute('fill') && path.getAttribute('fill') !== 'none';
+            
+            if (isBookmarked) {
+                path.setAttribute('fill', 'none');
+                showNotification('Removed from saved', 'info');
+            } else {
+                path.setAttribute('fill', 'currentColor');
+                showNotification('Saved! 📌', 'success');
+            }
+        });
+
+        // Copy to Clipboard
+        function copyToClipboard(text) {
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(() => {
+                    showNotification('Link copied to clipboard!', 'success');
+                }).catch(() => {
+                    showNotification('Failed to copy link', 'error');
+                });
+            }
+        }
+
+        // Helper Functions
+        function escapeHTML(str = '') {
+            return String(str).replace(/[&<>"']/g, m => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[m]));
+        }
+
+        function formatTimestamp(timestamp) {
+            if (!timestamp) return 'Just now';
+            const now = Date.now();
+            const diff = now - (timestamp.seconds ? timestamp.seconds * 1000 : timestamp);
+            const minutes = Math.floor(diff / 60000);
+            const hours = Math.floor(diff / 3600000);
+            const days = Math.floor(diff / 86400000);
+
+            if (minutes < 1) return 'Just now';
+            if (minutes < 60) return `${minutes}m ago`;
+            if (hours < 24) return `${hours}h ago`;
+            if (days < 7) return `${days}d ago`;
+            
+            const date = new Date(timestamp.seconds ? timestamp.seconds * 1000 : timestamp);
+            return date.toLocaleDateString();
+        }
+
+        // Navigation Buttons
+        document.getElementById('notifications-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Notifications feature coming soon! 🔔', 'info');
+        });
+
+        document.getElementById('messages-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Messages feature coming soon! 💬', 'info');
+        });
+
+        // Notification Function
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            const icons = {
+                success: '✓',
+                error: '✕',
+                info: 'ℹ'
+            };
+            const icon = icons[type] || icons.info;
+            
+            notification.className = `notification ${type}`;
+            notification.innerHTML = `
+                <span style="font-size: 18px; font-weight: bold;">${icon}</span>
+                <span>${message}</span>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+        // Dark Mode Toggle - Universal Implementation
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create theme toggle button
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.setAttribute('aria-label', 'Toggle dark mode');
+        themeToggle.innerHTML = `
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        `;
+        
+        // Append to body
+        document.body.appendChild(themeToggle);
+        
+        // Check for saved theme preference or default to 'light'
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        // Theme toggle event listener
+        themeToggle.addEventListener('click', function() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            // Animation effect
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => {
+                themeToggle.style.transform = '';
+            }, 300);
+        });
+    });
+    </script>
+</body>
+</html>

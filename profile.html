@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - Askverse</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="dashboard.html" class="logo-link">
+                    <div class="logo-small">A</div>
+                    <span class="logo-text">Askverse</span>
+                </a>
+            </div>
+            <div class="nav-center">
+                <div class="search-bar">
+                    <svg class="search-icon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                    <input type="text" placeholder="Search" class="search-input">
+                </div>
+            </div>
+            <div class="nav-right">
+                <a href="dashboard.html" class="nav-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="messages-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+                    </svg>
+                </a>
+                <a href="#" class="nav-icon" id="notifications-btn">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+                    </svg>
+                </a>
+                <a href="profile.html" class="nav-icon active">
+                    <div class="avatar-small" id="nav-avatar">U</div>
+                </a>
+                <button id="signout-btn" class="btn btn-outline btn-small">Sign Out</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <div class="profile-page">
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-avatar-large" id="profile-avatar">U</div>
+                <div class="profile-info">
+                    <h1 class="profile-username" id="profile-username">@username</h1>
+                    <p class="profile-fullname" id="profile-fullname">User Name</p>
+                    <p class="profile-email" id="profile-email">user@example.com</p>
+                    <button class="btn btn-outline btn-small" style="margin-top: 12px;">Edit Profile</button>
+                </div>
+            </div>
+
+            <div class="profile-stats">
+    <div class="stat-item">
+        <span class="stat-number" id="stat-questions">0</span>
+        <span class="stat-label">questions</span>
+    </div>
+    <div class="stat-item">
+        <span class="stat-number" id="stat-answers">0</span>
+        <span class="stat-label">answers</span>
+    </div>
+    <!-- ENHANCED: Make credits the star of the show -->
+    <div class="stat-item" style="background: var(--credits-bg); padding: 20px; border-radius: 16px; border: 2px solid var(--credits-gold); position: relative; overflow: hidden;">
+        <div style="position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 8px;">
+                <svg class="credits-icon" fill="var(--credits-gold)" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                </svg>
+            </div>
+            <span class="credits-large" id="stat-credits">0</span>
+            <span class="stat-label" style="color: var(--credits-gold); font-weight: 700;">TOTAL CREDITS</span>
+        </div>
+    </div>
+</div>
+
+<!-- ADD THIS NEW SECTION after profile-stats -->
+<div class="credits-breakdown" style="background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 32px;">
+    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 8px;">
+        <svg fill="var(--credits-gold)" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+        </svg>
+        Credits Breakdown
+    </h3>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px;">
+        <div style="background: var(--hover); border-radius: 12px; padding: 16px; border: 1px solid var(--border);">
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 600;">From Answers</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="credits-badge" style="font-size: 18px; flex: 1; justify-content: center;">
+                    <svg class="credits-icon" fill="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <span id="credits-from-answers">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: var(--hover); border-radius: 12px; padding: 16px; border: 1px solid var(--border);">
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 600;">From Questions</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="credits-badge" style="font-size: 18px; flex: 1; justify-content: center;">
+                    <svg class="credits-icon" fill="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <span id="credits-from-questions">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: var(--hover); border-radius: 12px; padding: 16px; border: 1px solid var(--border);">
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 600;">From Bounties</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="credits-badge" style="font-size: 18px; flex: 1; justify-content: center;">
+                    <svg class="credits-icon" fill="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <span id="credits-from-bounties">0</span>
+                </div>
+            </div>
+        </div>
+        
+        <div style="background: var(--hover); border-radius: 12px; padding: 16px; border: 1px solid var(--border);">
+            <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px; text-transform: uppercase; font-weight: 600;">Rank Bonus</div>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <div class="credits-badge" style="font-size: 18px; flex: 1; justify-content: center;">
+                    <svg class="credits-icon" fill="currentColor" viewBox="0 0 24 24" width="16" height="16">
+                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+                    </svg>
+                    <span id="credits-rank-bonus">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div style="margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--border);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+            <span style="font-size: 14px; color: var(--text-muted);">Level Progress</span>
+            <span style="font-size: 14px; font-weight: 600; color: var(--text);">Level 1</span>
+        </div>
+        <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
+            <div style="height: 100%; width: 0%; background: linear-gradient(90deg, var(--credits-gold), var(--warning)); transition: width 0.5s ease;" id="level-progress"></div>
+        </div>
+        <div style="font-size: 12px; color: var(--text-muted); margin-top: 8px; text-align: center;">
+            <span id="credits-to-next-level">900</span> credits to Level 2
+        </div>
+    </div>
+</div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, collection, query, where, getDocs, orderBy } 
+               from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+        import { firebaseConfig } from "./js/firebaseConfig.js";
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let currentUser = null;
+        let userData = null;
+
+        onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                window.location.href = 'index.html';
+            } else {
+                currentUser = user;
+                await loadProfile();
+            }
+        });
+
+        // Sign out
+        document.getElementById('signout-btn').addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = 'index.html';
+            } catch (error) {
+                console.error('Sign out error:', error);
+                showNotification('Error signing out. Please try again.', 'error');
+            }
+        });
+
+        async function loadProfile() {
+            try {
+                // Get user data
+                const userDoc = await getDoc(doc(db, 'users', currentUser.uid));
+                
+                if (userDoc.exists()) {
+                    userData = userDoc.data();
+                } else {
+                    userData = {
+                        email: currentUser.email,
+                        fullName: currentUser.displayName || currentUser.email.split('@')[0],
+                        username: currentUser.email.split('@')[0],
+                        credits: 100,
+                        questionsAsked: 0,
+                        answersGiven: 0
+                    };
+                }
+
+                // Update profile UI
+                const username = userData.username || currentUser.email.split('@')[0];
+                const fullName = userData.fullName || currentUser.displayName || 'User';
+                const email = currentUser.email;
+                const credits = userData.credits || 100;
+                const questionsAsked = userData.questionsAsked || 0;
+                const answersGiven = userData.answersGiven || 0;
+
+                // Update avatars
+                const initials = fullName.substring(0, 2).toUpperCase();
+                document.getElementById('nav-avatar').textContent = initials;
+                document.getElementById('profile-avatar').textContent = initials;
+
+                // Update text
+                document.getElementById('profile-username').textContent = `@${username}`;
+                document.getElementById('profile-fullname').textContent = fullName;
+                document.getElementById('profile-email').textContent = email;
+
+                // Update stats
+                document.getElementById('stat-questions').textContent = questionsAsked;
+                document.getElementById('stat-answers').textContent = answersGiven;
+                document.getElementById('stat-credits').textContent = credits;
+
+                // Load user's questions
+                await loadUserQuestions();
+
+            } catch (error) {
+                console.error('Error loading profile:', error);
+                showNotification('Error loading profile data', 'error');
+            }
+        }
+
+        async function loadUserQuestions() {
+            const grid = document.getElementById('profile-grid');
+            
+            try {
+                const q = query(
+                    collection(db, 'questions'),
+                    where('authorUid', '==', currentUser.uid),
+                    orderBy('createdAt', 'desc')
+                );
+                const snapshot = await getDocs(q);
+
+                grid.innerHTML = '';
+
+                if (snapshot.empty) {
+                    grid.innerHTML = `
+                        <div style="grid-column:1/-1;text-align:center;padding:60px 20px">
+                            <p style="color:var(--text-muted);font-size:16px;margin-bottom:16px">No questions yet</p>
+                            <a href="ask-question.html" class="btn btn-primary">Ask Your First Question</a>
+                        </div>
+                    `;
+                    return;
+                }
+
+                snapshot.forEach(docSnap => {
+                    const question = docSnap.data();
+                    const item = document.createElement('div');
+                    item.className = 'grid-item';
+                    item.style.cursor = 'pointer';
+                    item.addEventListener('click', () => {
+                        window.location.href = `question-detail.html?id=${docSnap.id}`;
+                    });
+
+                    item.innerHTML = `
+                        <div class="grid-item-overlay">
+                            <div class="grid-stats">
+                                <span>
+                                    <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                                        <path d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"/>
+                                    </svg>
+                                    ${question.upvotes || 0}
+                                </span>
+                                <span>
+                                    <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+                                        <path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                                    </svg>
+                                    ${question.answerCount || 0}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="grid-item-content">
+                            <p class="grid-item-text">${escapeHTML(question.title)}</p>
+                        </div>
+                    `;
+
+                    grid.appendChild(item);
+                });
+
+            } catch (error) {
+                console.error('Error loading user questions:', error);
+                grid.innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:40px">
+                        <p style="color:var(--error)">Failed to load questions</p>
+                    </div>
+                `;
+            }
+        }
+
+        function escapeHTML(str = '') {
+            return String(str).replace(/[&<>"']/g, m => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[m]));
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.tab-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+                this.classList.ad
+                ('active');
+                 const tab = this.dataset.tab;            if (tab === 'posts') {
+                loadUserQuestions();
+            } else {
+                document.getElementById('profile-grid').innerHTML = `
+                    <div style="grid-column:1/-1;text-align:center;padding:60px 20px">
+                        <p style="color:var(--text-muted)">Coming soon!</p>
+                    </div>
+                `;
+            }
+        });
+    });    // Navigation Buttons
+    document.getElementById('notifications-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showNotification('Notifications feature coming soon! 🔔', 'info');
+    });    document.getElementById('messages-btn').addEventListener('click', (e) => {
+        e.preventDefault();
+        showNotification('Messages feature coming soon! 💬', 'info');
+    });    // Notification Function
+    function showNotification(message, type = 'success') {
+        const notification = document.createElement('div');
+        const icons = {
+            success: '✓',
+            error: '✕',
+            info: 'ℹ'
+        };
+        const icon = icons[type] || icons.info;        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+            <span style="font-size: 18px; font-weight: bold;">${icon}</span>
+            <span>${message}</span>
+        `;        document.body.appendChild(notification);        setTimeout(() => {
+            notification.style.animation = 'slideOut 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+     function updateCreditsBreakdown() {
+        const totalCredits = userData.credits || 0;
+        const answersGiven = userData.answersGiven || 0;
+        const questionsAsked = userData.questionsAsked || 0;
+        
+        // Calculate credits from different sources
+        const creditsFromAnswers = answersGiven * 10; // 10 credits per answer
+        const creditsFromQuestions = questionsAsked * 5; // 5 credits per question
+        const creditsFromBounties = Math.max(0, totalCredits - creditsFromAnswers - creditsFromQuestions - 100); // Remaining after initial 100
+        const creditsRankBonus = 0; // Placeholder for future rank system
+        
+        document.getElementById('credits-from-answers').textContent = creditsFromAnswers;
+        document.getElementById('credits-from-questions').textContent = creditsFromQuestions;
+        document.getElementById('credits-from-bounties').textContent = creditsFromBounties;
+        document.getElementById('credits-rank-bonus').textContent = creditsRankBonus;
+        
+        // Calculate level progress (every 1000 credits = 1 level)
+        const currentLevel = Math.floor(totalCredits / 1000) + 1;
+        const creditsInCurrentLevel = totalCredits % 1000;
+        const progressPercentage = (creditsInCurrentLevel / 1000) * 100;
+        
+        document.getElementById('level-progress').style.width = progressPercentage + '%';
+        document.getElementById('credits-to-next-level').textContent = 1000 - creditsInCurrentLevel;
+    }
+    
+    // Call this function after loading user data
+    // Add this line inside your loadProfile() function after setting userData
+    updateCreditsBreakdown();
+     document.addEventListener('DOMContentLoaded', function() {
+        const themeToggle = document.createElement('button');
+        themeToggle.className = 'theme-toggle';
+        themeToggle.innerHTML = `
+            <svg class="sun-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>
+            </svg>
+            <svg class="moon-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+            </svg>
+        `;
+        
+        document.body.appendChild(themeToggle);
+        
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', currentTheme);
+        
+        themeToggle.addEventListener('click', function() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            const newTheme = theme === 'light' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            themeToggle.style.transform = 'rotate(360deg)';
+            setTimeout(() => { themeToggle.style.transform = ''; }, 300);
+        });
+    });
+</script>
+</body>
+</html>
